@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable name="data" type="ru.yandex.dunaev.mick.myenglish.Book"/>
+    </data>
+
+    <androidx.cardview.widget.CardView android:layout_width="match_parent"
+                                       android:layout_height="wrap_content"
+                                       app:cardCornerRadius="5dp"
+                                       app:cardElevation="2dp"
+                                       android:layout_marginTop="5dp"
+                                       android:layout_marginLeft="2dp"
+                                       android:layout_marginBottom="0dp"
+                                       android:layout_marginRight="2dp">
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <ImageView android:layout_width="match_parent"
+                       android:layout_height="200dp"
+                       android:contentDescription="@string/image_book_cover"
+                       app:src="@{data.cover}"
+                       android:scaleType="center"/>
+            <TextView
+                    android:text="@{data.title}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/title" android:textSize="18sp"
+                    android:textStyle="bold"/>
+            <TextView
+                    android:text="@{data.author}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/author"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

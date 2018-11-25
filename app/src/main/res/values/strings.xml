@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MyEnglish</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fail_loading_text">fail loading</string>
+    <string name="empty_library_text">empty library</string>
+    <string name="image_book_cover">image book cover</string>
+</resources>
