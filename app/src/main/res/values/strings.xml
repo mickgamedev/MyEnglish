@@ -6,4 +6,5 @@
     <string name="fail_loading_text">fail loading</string>
     <string name="empty_library_text">empty library</string>
     <string name="image_book_cover">image book cover</string>
+    <string name="download_image">download image</string>
 </resources>

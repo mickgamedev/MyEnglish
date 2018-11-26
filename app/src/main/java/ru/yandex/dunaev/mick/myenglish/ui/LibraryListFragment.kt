@@ -1,4 +1,4 @@
-package ru.yandex.dunaev.mick.myenglish
+package ru.yandex.dunaev.mick.myenglish.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,7 +8,11 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
+import ru.yandex.dunaev.mick.myenglish.adapters.BookListAdapter
+import ru.yandex.dunaev.mick.myenglish.viewmodel.MainViewModel
+import ru.yandex.dunaev.mick.myenglish.R
 import ru.yandex.dunaev.mick.myenglish.databinding.FragmentLibraryListBinding
+import ru.yandex.dunaev.mick.myenglish.util.isPortrait
 
 class LibraryListFragment : Fragment() {
     private lateinit var binding: FragmentLibraryListBinding
@@ -18,7 +22,8 @@ class LibraryListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_library_list, container, false)
+        binding = DataBindingUtil.inflate(inflater,
+            R.layout.fragment_library_list, container, false)
         model = ViewModelProviders.of(activity!!).get(MainViewModel::class.java)
         binding.viewModel = model
         binding.recycler.apply{

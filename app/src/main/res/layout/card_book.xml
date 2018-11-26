@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <variable name="data" type="ru.yandex.dunaev.mick.myenglish.Book"/>
+        <variable name="data" type="ru.yandex.dunaev.mick.myenglish.repository.BookBinding"/>
     </data>
 
     <androidx.cardview.widget.CardView android:layout_width="match_parent"
@@ -17,19 +17,38 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+            <FrameLayout android:layout_width="match_parent" android:layout_height="200dp">
+                <ImageView android:layout_width="match_parent"
+                           android:layout_height="match_parent"
+                           android:contentDescription="@string/image_book_cover"
+                           app:src="@{data.book.cover}"
+                           android:scaleType="center" android:id="@+id/coverImage"/>
+                <ImageView
+                        app:visibility="@{!data.isDownload}"
+                        android:contentDescription="@string/download_image"
+                        android:onClick="@{() -> data.downloadBook()}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" app:srcCompat="@drawable/ic_noun_download_711090"
+                        android:id="@+id/downloadImage" android:layout_gravity="center_vertical|center_horizontal"/>
 
-            <ImageView android:layout_width="match_parent"
-                       android:layout_height="200dp"
-                       android:contentDescription="@string/image_book_cover"
-                       app:src="@{data.cover}"
-                       android:scaleType="center"/>
+
+            </FrameLayout>
+            <ProgressBar
+                    app:visibility="@{data.isDownloading}"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/downloadProgress"
+                    android:max="@{data.totalBytes}"
+                    android:progress="@{data.progressDownload}"
+                    android:layout_gravity="bottom"/>
             <TextView
-                    android:text="@{data.title}"
+                    android:text="@{data.book.title}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@+id/title" android:textSize="18sp"
                     android:textStyle="bold"/>
             <TextView
-                    android:text="@{data.author}"
+                    android:text="@{data.book.author}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@+id/author"/>
         </LinearLayout>

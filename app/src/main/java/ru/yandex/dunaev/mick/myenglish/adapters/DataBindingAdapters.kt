@@ -1,4 +1,4 @@
-package ru.yandex.dunaev.mick.myenglish
+package ru.yandex.dunaev.mick.myenglish.adapters
 
 import android.view.View
 import android.widget.ImageView
@@ -6,6 +6,8 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.squareup.picasso.Picasso
+import ru.yandex.dunaev.mick.myenglish.R
+import ru.yandex.dunaev.mick.myenglish.repository.BookBinding
 
 @BindingAdapter("visibility")
 fun View.SetVisibitily(b: Boolean){
@@ -30,7 +32,7 @@ fun ImageView.loadImage(url: String) {
 }
 
 @BindingAdapter("library")
-fun RecyclerView.setLibrary(lib: List<Book>?){
+fun RecyclerView.setLibrary(lib: List<BookBinding>?){
     lib?: return
     adapter?: return
     (adapter as BookListAdapter).setItems(lib)

@@ -1,4 +1,4 @@
-package ru.yandex.dunaev.mick.myenglish
+package ru.yandex.dunaev.mick.myenglish.adapters
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -6,9 +6,13 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
+import ru.yandex.dunaev.mick.myenglish.R
 import ru.yandex.dunaev.mick.myenglish.databinding.CardBookBinding
+import ru.yandex.dunaev.mick.myenglish.repository.BookBinding
 
-class BookListAdapter : CategoryAdapter<Book, CardBookBinding>(R.layout.card_book) {
+class BookListAdapter : CategoryAdapter<BookBinding, CardBookBinding>(
+    R.layout.card_book
+) {
     override fun onBindViewHolder(holder: CategoryHolder<CardBookBinding>, position: Int) = with(holder.binding){
         holder.itemView.setOnClickListener { onItemClick(position) }
         data = getItem(position)

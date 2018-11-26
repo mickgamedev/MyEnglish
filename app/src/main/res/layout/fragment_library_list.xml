@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
     <data>
-        <variable name="viewModel" type="ru.yandex.dunaev.mick.myenglish.MainViewModel"/>
+        <variable name="viewModel" type="ru.yandex.dunaev.mick.myenglish.viewmodel.MainViewModel"/>
     </data>
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:layout_width="match_parent"

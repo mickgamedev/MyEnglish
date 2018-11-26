@@ -1,17 +1,20 @@
-package ru.yandex.dunaev.mick.myenglish
+package ru.yandex.dunaev.mick.myenglish.ui
 
 import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.firebase.ui.auth.AuthUI
+import com.github.florent37.runtimepermission.kotlin.askPermission
 import ru.yandex.dunaev.mick.myenglish.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
+import ru.yandex.dunaev.mick.myenglish.viewmodel.MainViewModel
+import ru.yandex.dunaev.mick.myenglish.R
+import ru.yandex.dunaev.mick.myenglish.repository.Repository
+import ru.yandex.dunaev.mick.myenglish.util.toast
 
 
 class MainActivity : AppCompatActivity() {
@@ -45,6 +48,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun afterAuth() {
         model.afterAuth(FirebaseAuth.getInstance().currentUser!!)
+        askPermission{
+            Repository.afterAskPermission()
+        }.onDeclined {
+            toast("Permission required")
+            finish()
+        }
     }
 
     private fun failedAuth(){
